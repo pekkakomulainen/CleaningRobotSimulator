@@ -1,14 +1,8 @@
 const directions = require('../constants/directions')
-const operators = require('../constants/operators')
 const operations = require('./operations')
 const cutValueToBounds = require('./cutValueToBounds')
 
-const directionToOperation = dir => ({
-  [directions.EAST]: operations(operators.SUBSTRACT),
-  [directions.NORTH]: operations(operators.ADD),
-  [directions.SOUTH]: operations(operators.SUBSTRACT),
-  [directions.WEST]: operations(operators.ADD)
-})[dir]
+const directionToOperation = dir => operations(directions.directionToOperator(dir))
 
 class vertex {
   constructor(x, y) {
@@ -24,6 +18,10 @@ class vertex {
     return this._y
   }
   
+  isEqual(anotherVertex) {
+    return (this._x === anotherVertex.x && this._y === anotherVertex.y) ? true : false
+  }
+
   newFromExisting(dir, steps) {
     const horizontalOrVertical = directions.toHorizontalOrVertical(dir)
     const operation = directionToOperation(dir)

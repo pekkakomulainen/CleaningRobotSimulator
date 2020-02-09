@@ -10,6 +10,10 @@ class enterPathReqBodyParser {
   commands() {
     return this._body.commands
   }
+
+  commandCount() {
+    return this._body.commands ? this._body.commands.length : 0
+  }
 }
 
 const getRequestBodyParser = (action, body) => ({

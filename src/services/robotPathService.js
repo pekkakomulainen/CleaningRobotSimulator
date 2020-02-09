@@ -3,10 +3,11 @@ const edge = require('../utility/edge')
 const vertex = require('../utility/vertex')
 const linkedList = require('../utility/linkedList')
 const linkedListNode = require('../utility/linkedListNode')
+const serviceNames = require('../constants/serviceNames')
+const serviceCollection = require('./serviceCollection')
 
 class robotPathService {
-  constructor() {
-  }
+  constructor() {}
 
   buildPath(initialLocation, commands) {
     const rootEdge = new edge(new vertex(initialLocation.x, initialLocation.y), directions.NORTH, 0)
@@ -22,6 +23,11 @@ class robotPathService {
     });
 
     return path
+  }
+
+  calculateEdgesAndUniqueVerticesVisitedByPath(path) {
+    const strategy = serviceCollection.getService(serviceNames.CALCULATION_STRATEGY)
+    return strategy.calculate(path)
   }
 }
 

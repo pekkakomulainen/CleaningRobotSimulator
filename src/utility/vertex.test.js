@@ -51,3 +51,19 @@ test('verify that vertex can be moved west correctly',
     t.is(2, v2.y)
   }
 )
+
+test('Verify that isEqual invoked with similar vertex returns true',
+  t => {
+    const v2 = v.newFromExisting(directions.NORTH, 0)
+    const isEqual = v.isEqual(v2)
+    t.is(isEqual, true)
+  }
+)
+
+test('Verify that isEqual invoked with different vertex returns false',
+  t => {
+    const v2 = v.newFromExisting(directions.NORTH, 1)
+    const isEqual = v.isEqual(v2)
+    t.is(isEqual, false)
+  }
+)

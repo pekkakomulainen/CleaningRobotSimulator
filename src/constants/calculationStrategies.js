@@ -1,0 +1,1 @@
+exports.BRUTE_FORCE = 'bruteForce'
