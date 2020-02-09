@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ../../. 
+    image: "pekka.komulainen/app"
+    depends_on:
+        - postgre
+    environment:
+        port: 5000
+        use_database: 1
+        PGHOST: postgre
+        PGUSER: docker
+        PGDATABASE: docker
+        PGPORT: 5432
+    ports:
+      - "5000:5000"
+  postgre:
+    build:
+      context: ../postgres/.
+    image: "pekka.komulainen/pg"
+    ports:
+      - "5432:5432"
