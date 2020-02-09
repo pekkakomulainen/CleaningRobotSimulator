@@ -1,16 +1,22 @@
 class serviceCollection {
   constructor() {
-    this._services = {}
+    this._serviceRegistrations = {}
   }
 
-  registerService(name, service) {
-    this._services[name] = service
+  // Registers a service or a service factory. If isFactory is true, service must be
+  // a function of type (() => new service). Otherwise, service must be a service instance.
+  registerService(name, service, isFactory) {
+    this._serviceRegistrations[name] = { service: service, isFactory: isFactory }
   }
 
   getService(name) {
-    const service = this._services[name]
-    console.log(`serviceCollection.getService: name = ${name}, returned service = ${typeof service} - ${service.constructor.name}`)
-    return service
+    const registration = this._serviceRegistrations[name]
+    if (registration.isFactory === true) {      
+      return registration.service()
+    }
+    else {
+      return registration.service
+    }
   }
 }
 

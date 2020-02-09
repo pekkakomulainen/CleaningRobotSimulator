@@ -33,7 +33,7 @@ else {
 }
 
 // Always instantiate a new strategy object when CALCULATION_STRATEGY is requested
-serviceCollection.registerService(serviceNames.CALCULATION_STRATEGY, (() => strategyProvider(strategyNames.BRUTE_FORCE))())
+serviceCollection.registerService(serviceNames.CALCULATION_STRATEGY, (() => strategyProvider(strategyNames.BRUTE_FORCE)), true)
 serviceCollection.registerService(serviceNames.ROBOT_PATH_SERVICE, new robotPathService())
 serviceCollection.registerService(serviceNames.RESPONSE_DATA_GEN_SERVICE, new responseDataService())
 
