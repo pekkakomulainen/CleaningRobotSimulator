@@ -1,0 +1,11 @@
+{
+  "name": "cleaningrobotsimulator",
+  "version": "1.0.0",
+  "description": "Cleaning robot simulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pekka Komulainen",
+  "license": "ISC"
+}
