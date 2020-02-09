@@ -1,6 +1,6 @@
 class bitVector {
   constructor(length) {
-    const bytesRequired = this._calculateRequiredSpace(length)
+    const bytesRequired = this._calculateRequiredSpaceInBytes(length)
     this._buffer = new ArrayBuffer(bytesRequired)
     this._view = new Uint8Array(this._buffer)
     for (let i = 0; i < length; i++) {
@@ -9,12 +9,13 @@ class bitVector {
     this._length = length
   }
 
-  _calculateRequiredSpace(length) {
-    var bytesRequired = length / 8
+  _calculateRequiredSpaceInBytes(length) {
+    let bytesRequired = (length - length % 8) / 8
     if (length % 8) {
       bytesRequired++
-    } 
-    
+    }
+
+    // console.log(`****** _calculateRequiredSpaceInBytes: length = ${length}, bytesRequired = ${bytesRequired}`)
     return bytesRequired
   }
 
