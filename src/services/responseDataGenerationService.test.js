@@ -20,7 +20,7 @@ test('Verify that response data is generated correctly for enter-path reqest.',
     }
 
     const responseGenerationService = new responseDataGenerationService()
-    const responseData = responseGenerationService.generateEnterPathResponse(data)
+    const responseData = responseGenerationService._generateEnterPathResponse(data)
     t.deepEqual(responseData, expectedResponse)
   }
 )
