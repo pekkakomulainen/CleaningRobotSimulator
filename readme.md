@@ -58,3 +58,7 @@ The code is available as-is. Run it with your own risk. I take no responsibility
 ## License
 
 Free to use. To my best knowledge all libraries included have permissive licenses.
+
+## Stuff
+
+New stuff
